@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TutorsListComponent } from './components/tutors-list/tutors-list.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+
 
 const routes: Routes = [
-  {
+  { path: 'tutors', component: TutorsListComponent },
+  { path: 'users', component: UsersListComponent },
+
+  { path: '', redirectTo: '/tutors', pathMatch: 'full' },
+  /* {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
@@ -22,7 +29,7 @@ const routes: Routes = [
   {
     path: 'classes',
     loadChildren: () => import('./pages/classes/classes.module').then( m => m.ClassesPageModule)
-  },
+  }, */
 ];
 
 @NgModule({
