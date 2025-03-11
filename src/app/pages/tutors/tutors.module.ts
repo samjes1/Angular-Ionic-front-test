@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,9 +12,9 @@ import { TutorsPage } from './tutors.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    TutorsPageRoutingModule
+    TutorsPageRoutingModule,
+    TutorsPage
   ],
-  declarations: [TutorsPage]
+ 
 })
 export class TutorsPageModule {}

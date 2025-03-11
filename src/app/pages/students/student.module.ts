@@ -12,9 +12,9 @@ import { StudentPage } from './student.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    StudentPageRoutingModule
+    StudentPageRoutingModule,
+    StudentPage,
   ],
-  declarations: [StudentPage]
+
 })
 export class StudentPageModule {}

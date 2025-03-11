@@ -12,9 +12,9 @@ import { ClassesPage } from './classes.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    ClassesPageRoutingModule
+    ClassesPageRoutingModule,
+    ClassesPage
   ],
-  declarations: [ClassesPage]
+
 })
 export class ClassesPageModule {}
