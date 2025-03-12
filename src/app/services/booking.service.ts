@@ -14,7 +14,6 @@ export class BookingService {
   constructor() {}
 
   getBookings(): Observable<Booking[]> {
-    //console.log(this.apiURL);
     const load = this.http.get<Booking[]>(this.apiURL);
 
     return load;
