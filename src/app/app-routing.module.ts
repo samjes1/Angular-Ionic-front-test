@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { TutorsListComponent } from './components/tutors-list/tutors-list.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { BookingComponent } from './components/booking/booking.component';
 
 
 const routes: Routes = [
   { path: 'tutors', component: TutorsListComponent },
   { path: 'users', component: UsersListComponent },
+  { path: 'bookings', component: BookingComponent },
 
   { path: '', redirectTo: '/tutors', pathMatch: 'full' },
   /* {
