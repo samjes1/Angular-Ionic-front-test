@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from 'src/models/user.model';
 
 @Injectable({
@@ -8,13 +9,12 @@ import { User } from 'src/models/user.model';
 })
 export class UsersService {
   private http = inject(HttpClient);
- private apiURL = 'https://test.worldsacross.com/api/users' // change apiURL with enviromment
+ private apiURL = `${environment.baseUrl}/tutors`;
 
   constructor() { }
 
   getUsers():  Observable<User[]>{
-    //console.log(this.apiURL);
-  const  load = this.http.get<User[]>(this.apiURL)
+  const load = this.http.get<User[]>(this.apiURL)
   
     return load
   }

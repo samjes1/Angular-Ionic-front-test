@@ -5,7 +5,7 @@
       <ion-item>
         <ion-label>Filtrar por usuario:</ion-label>
         <ion-select [ngModel]="selectedUser()" (ngModelChange)="selectedUser.set($event)">
-          <ion-select-option [value]="'all'" selected>Todos</ion-select-option>
+          <ion-select-option [value]="null" selected>Todos</ion-select-option>
           @for (user of users(); track user.id) {
             <ion-select-option [value]="user.id">
               {{ user.first_name }} {{ user.last_name }} 
@@ -18,6 +18,19 @@
 </ion-header>
 
 <ion-content>
+  @if (isLoading()) {
+    <div class="loading-spinner">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando reservas...</p>
+    </div>
+  }
+  @else if (error()) {
+    <div class="error-state ion-text-center">
+      <ion-icon name="alert-circle" color="danger"></ion-icon>
+      <p>{{ error() }}</p>
+      <ion-button (click)="loadData()">Reintentar</ion-button>
+    </div>
+  }
   <ion-list>
     @for (booking of filteredBookings; track booking.id) {
       <ion-item>
@@ -25,6 +38,12 @@
           <h2>Tutor: {{ booking.staff.first_name }} {{ booking.staff.last_name }}</h2>
           <p>Fecha: {{ booking.date | date: 'dd/MM/yyyy' }}</p>
           <p>Especialidad: {{ booking.staff.speciality }}</p>
+        </ion-label>
+      </ion-item>
+    }@empty {
+      <ion-item>
+        <ion-label class="ion-text-center">
+          No se encontraron reservas
         </ion-label>
       </ion-item>
     }

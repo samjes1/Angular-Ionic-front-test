@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Booking } from 'src/models/booking.model';
 
 @Injectable({
@@ -8,11 +9,11 @@ import { Booking } from 'src/models/booking.model';
 })
 export class BookingService {
   private http = inject(HttpClient);
-  private apiURL = 'https://test.worldsacross.com/api/booking'; // change apiURL with enviromment
+  private apiURL = `${environment.baseUrl}/booking`; 
 
   constructor() {}
 
-  getBooking(): Observable<Booking[]> {
+  getBookings(): Observable<Booking[]> {
     //console.log(this.apiURL);
     const load = this.http.get<Booking[]>(this.apiURL);
 
