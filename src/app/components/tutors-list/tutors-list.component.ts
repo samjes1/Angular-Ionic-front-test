@@ -18,7 +18,7 @@ export class TutorsListComponent  implements OnInit {
   public status = Status
 
 
-  public tutorsService = inject(TutorsService);
+  private tutorsService = inject(TutorsService);
 
   constructor() { }
 
