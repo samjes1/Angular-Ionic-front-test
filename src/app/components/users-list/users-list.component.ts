@@ -1,7 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController, Platform } from '@ionic/angular';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/models/user.model';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @Component({
   selector: 'app-users-list',
@@ -15,36 +16,47 @@ export class UsersListComponent implements OnInit {
   error = signal<string | null>(null);
   private usersService = inject(UsersService);
 
-  constructor() {
+  
+  constructor(
+    private platform: Platform,
+    private modalCard: ModalController
+  ) {}
+  
+  ngOnInit(): void {
     this.loadUsers();
   }
-
-  ngOnInit(): void {
-    
+  
+  private async loadUsers() {
+    try {
+      this.usersService.getUsers().subscribe({
+        next: (users) => this.users.set(users),
+        error: () => this.error.set('Failed to load users')
+      });
+    } catch (error) {
+      this.error.set('Failed to load users');
+    }
   }
- 
-  private loadUsers() {
-    this.usersService.getUsers().subscribe({
-      next: (data) => {
-        this.users.set(data);
-        this.error.set(null);
-      },
-      error: (err) => {
-        console.error('Error loading users:', err);
-        this.error.set('No hay usuarios disponibles en estos momentos');
-      }
-    });
-  }
-
-  selectUser(user: User) {
-    if (this.selectedUser() === user) {
-      this.selectedUser.set(null);
+  
+  async selectUser(user: User) {
+    if (this.isMobileView()) {
+      const modal = await this.modalCard.create({
+        component: UserCardComponent,
+        componentProps: { user },
+        cssClass: 'auto-height-modal',
+        presentingElement: await this.modalCard.getTop()
+      });
+      
+      await modal.present();
     } else {
       this.selectedUser.set(user);
     }
+    
   }
 
+
   isMobileView(): boolean {
-    return window.innerWidth <= 768;
+    return this.platform.width() < 768;
   }
+
+ 
 }
