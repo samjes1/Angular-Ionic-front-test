@@ -48,5 +48,7 @@ export const environment = {
 ionic build 
 npx cap sync android
 ```
-
- 
+2. Levantar en android
+ ```
+ npx cap open android
+ ```
