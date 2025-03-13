@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { catchError, of, take } from 'rxjs';
 import { BookingService } from 'src/app/services/booking.service';
@@ -24,6 +25,7 @@ export class BookingComponent implements OnInit {
 
    private bookingsService = inject(BookingService);
    private usersService = inject(UsersService);
+   private router = inject(Router);
  
    ngOnInit() {
      this.loadData();
@@ -69,4 +71,8 @@ export class BookingComponent implements OnInit {
        ? this.bookings().filter(b => b.user_id === userId)
        : this.bookings();
    }
+
+   goToHome() {
+    this.router.navigate(['/home']); 
+  }
  }

@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { TutorsListComponent } from './components/tutors-list/tutors-list.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { BookingComponent } from './components/booking/booking.component';
+import HomePage from './pages/home/home.page';
+
 
 
 const routes: Routes = [
@@ -10,12 +12,12 @@ const routes: Routes = [
   { path: 'users', component: UsersListComponent },
   { path: 'bookings', component: BookingComponent },
 
-  { path: '', redirectTo: '/tutors', pathMatch: 'full' },
-  /* {
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadComponent: () => import('./pages/home/home.page')
   },
-  {
+ /* {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

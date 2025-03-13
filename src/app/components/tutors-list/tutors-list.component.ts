@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TutorsService } from 'src/app/services/tutors.service';
 import { Status, Tutor } from 'src/models/tutor.model';
@@ -15,10 +16,11 @@ export class TutorsListComponent  implements OnInit {
   filteredTutors: Tutor[] = []
   specialityFilter = new FormControl('all');
   uniqueSpecialities: string[] = [];
-  public status = Status
+  public status = Status;
 
 
   private tutorsService = inject(TutorsService);
+  private router = inject(Router);
 
   constructor() { }
 
@@ -35,6 +37,9 @@ export class TutorsListComponent  implements OnInit {
           this.tutors.filter(t => t.speciality === value) : 
           this.tutors;
       });
+    }
+    goToHome() {
+      this.router.navigate(['/home']); 
     }
   }
 
