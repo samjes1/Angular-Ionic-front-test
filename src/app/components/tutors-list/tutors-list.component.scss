@@ -30,9 +30,6 @@ ion-item {
   }
 }
 
-.select-list {
-  width: 100%;
-}
 
 ion-list {
   background: transparent;
@@ -57,8 +54,9 @@ ion-item.list-item {
   }
   
   p {
-    color: var(--ion-color-medium);
+    color: #ac71e4;;
     font-size: 0.9em;
+    
   }
 }
 
