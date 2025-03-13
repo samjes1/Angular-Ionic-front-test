@@ -28,8 +28,10 @@ npm install -g @angular/cli@latest @ionic/cli@latest
 ```
 
 ## Configuración 
+
 1. Configurar variables de entorno
-```export const environment = {
+```bash
+export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api' // URL de tu API
 }; ```
