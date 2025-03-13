@@ -9,12 +9,89 @@ ion-title {
   font-size: 10px;
 }
 
-center-buttons {
+.app-tittle {
+  font-size: 30px;
+}
+
+.main-content {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  text-align: center;
+}
+
+ion-content.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-container {
+  margin: auto;
+  padding-top: 250px;
+  max-width: 800px;
   width: 100%;
 }
 
-.app-tittle {
-  font-size: 30px;
+.instruction-text {
+  color: var(--ion-color-medium);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.buttons-toolbar {
+  --background: transparent;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0 auto;
+
+  .nav-button {
+    --background: var(--ion-color-primary);
+    --background-hover: var(--ion-color-primary-light);
+    --color: var(--ion-color-primary-contrast);
+    --padding-start: 1.5rem;
+    --padding-end: 1.5rem;
+    --border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.center-buttons {
+  justify-content: center;
+  width: 100%;
+
+  .footer-link {
+    --color: var(--ion-color-medium);
+    --background-hover: var(--ion-color-primary-light);
+    font-size: 0.9rem;
+
+    &:hover {
+      --color: var(--ion-color-primary);
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .buttons-toolbar {
+    flex-direction: column;
+    align-items: center;
+
+    .nav-button {
+      width: 100%;
+      max-width: 300px;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .center-buttons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }

@@ -1,20 +1,37 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title class="app-tittle">Tutor Management</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  
 
-  <p>Presiona uno de los siguientes botones para navegar</p>
-  <ion-toolbar>
-
-    <ion-button routerLink="/users" routerDirection="root">Usuarios</ion-button>
-    <ion-button routerLink="/tutors" routerDirection="root">Tutores</ion-button>
-    <ion-button routerLink="/bookings" routerDirection="root">Reservas</ion-button>
+<ion-content class="main-content">
+  <div class="centered-container">
+    <p class="instruction-text">Presiona uno de los siguientes botones para navegar</p>
     
-  </ion-toolbar>
-
+    <ion-toolbar class="buttons-toolbar">
+      <ion-button 
+        class="nav-button"
+        routerLink="/users" 
+        routerDirection="root"
+      >
+        Usuarios
+      </ion-button>
+      <ion-button 
+        class="nav-button"
+        routerLink="/tutors" 
+        routerDirection="root"
+      >
+        Tutores
+      </ion-button>
+      <ion-button 
+        class="nav-button"
+        routerLink="/bookings" 
+        routerDirection="root"
+      >
+        Reservas
+      </ion-button>
+    </ion-toolbar>
+  </div>
 </ion-content>
 
 <ion-footer>
