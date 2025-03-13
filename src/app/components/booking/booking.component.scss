@@ -1,0 +1,85 @@
+
+.skeleton-container {
+    padding: 16px;
+    
+    ion-card {
+      margin: 0 0 16px 0;
+    }
+  }
+  
+.select-list{
+  background-color: #dba785 !important;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+  .error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    
+    .error-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .booking-card {
+    margin: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  
+  
+    &:hover {
+      transform: translateY(-2px);
+    }
+  
+    ion-card-header {
+      background: var(--ion-color-light);
+      
+      ion-card-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.2rem;
+        color: var(--ion-color-primary-light);
+      }
+      
+      ion-card-subtitle {
+        font-size: 0.9rem;
+        color: var(--ion-color-medium);
+      }
+    }
+  
+    ion-avatar {
+      width: 40px;
+      height: 40px;
+    }
+  
+    ion-badge {
+      margin-top: 4px;
+    }
+  }
+  
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    
+    .empty-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .booking-card {
+      margin: 16px auto;
+      max-width: 800px;
+    }
+  }

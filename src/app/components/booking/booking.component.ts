@@ -1,4 +1,4 @@
-import { DatePipe, TitleCasePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -66,7 +66,7 @@ export class BookingComponent implements OnInit {
    get filteredBookings() {
      const userId = this.selectedUser();
      return userId 
-       ? this.bookings().filter(b => b.user.id === userId)
+       ? this.bookings().filter(b => b.user_id === userId)
        : this.bookings();
    }
  }

@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="title">Tutores</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Tutores</ion-title>
   </ion-toolbar>
   <ion-toolbar>
     <ion-item>
-      <ion-label>Filtrar por especialidad:</ion-label>
-      <ion-select [formControl]="specialityFilter">
-        <ion-select-option [value]="'all'" selected>Todas</ion-select-option>
+      <ion-label color="prmary">Filtrar por especialidad:</ion-label>
+      <ion-select [formControl]="specialityFilter" >
+        <ion-select-option [value]="'all'" selected class="select-list">Todas</ion-select-option>
         @for (spec of uniqueSpecialities; track spec) {
           <ion-select-option [value]="spec">
             {{ spec }}

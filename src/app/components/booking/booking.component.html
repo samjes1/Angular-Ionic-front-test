@@ -1,51 +1,130 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Reservas</ion-title>
-    <ion-toolbar>
-      <ion-item>
-        <ion-label>Filtrar por usuario:</ion-label>
-        <ion-select [ngModel]="selectedUser()" (ngModelChange)="selectedUser.set($event)">
-          <ion-select-option [value]="null" selected>Todos</ion-select-option>
-          @for (user of users(); track user.id) {
-            <ion-select-option [value]="user.id">
-              {{ user.first_name }} {{ user.last_name }} 
-            </ion-select-option>
-          }
-        </ion-select>
-      </ion-item>
-    </ion-toolbar>
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Gestión de Reservas</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-item lines="none" color="primary" >
+      <ion-select class="select-list"
+      label="Filtrar por usuario:" 
+      label-placement="floating"
+      [ngModel]="selectedUser()" 
+      (ngModelChange)="selectedUser.set(+$event)"
+      interface="popover"
+      >
+      <ion-icon slot="start" name="reorder-four"></ion-icon>
+        <ion-select-option [value]="null">Todos los usuarios</ion-select-option>
+        @for (user of users(); track user.id) {
+          <ion-select-option [value]="user.id">
+            {{ user.first_name }} {{ user.last_name }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <!-- Estado de carga -->
   @if (isLoading()) {
-    <div class="loading-spinner">
-      <ion-spinner name="crescent"></ion-spinner>
-      <p>Cargando reservas...</p>
+    <div class="skeleton-container">
+      @for (i of [1,2,3]; track i) {
+        <ion-card class="ion-margin">
+          <ion-skeleton-text 
+            [animated]="true" 
+            style="width: 100%; height: 120px"
+          ></ion-skeleton-text>
+        </ion-card>
+      }
     </div>
   }
+
+  <!-- Estado de error -->
   @else if (error()) {
-    <div class="error-state ion-text-center">
-      <ion-icon name="alert-circle" color="danger"></ion-icon>
-      <p>{{ error() }}</p>
-      <ion-button (click)="loadData()">Reintentar</ion-button>
+    <div class="error-state ion-padding">
+      <ion-icon 
+        name="sad-outline" 
+        color="danger" 
+        class="error-icon"
+      ></ion-icon>
+      <h2 class="ion-text-center">¡Ups! Algo salió mal</h2>
+      <p class="ion-text-center">{{ error() }}</p>
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        (click)="loadData()"
+      >
+        <ion-icon slot="start" name="reload"></ion-icon>
+        Reintentar
+      </ion-button>
     </div>
   }
-  <ion-list>
-    @for (booking of filteredBookings; track booking.id) {
-      <ion-item>
-        <ion-label>
-          <h2>Tutor: {{ booking.staff.first_name }} {{ booking.staff.last_name }}</h2>
-          <p>Fecha: {{ booking.date | date: 'dd/MM/yyyy' }}</p>
-          <p>Especialidad: {{ booking.staff.speciality }}</p>
-        </ion-label>
-      </ion-item>
-    }@empty {
-      <ion-item>
-        <ion-label class="ion-text-center">
-          No se encontraron reservas
-        </ion-label>
-      </ion-item>
-    }
-  </ion-list>
+
+  <!-- Contenido principal -->
+  @else {
+    <ion-list lines="none">
+      @for (booking of filteredBookings; track booking.id) {
+        <ion-card class="booking-card">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="calendar"></ion-icon>
+              {{ booking.date | date: 'dd MMMM yyyy'}}
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{ booking.start_time }} - {{ booking.end_time }}
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="12" size-md="6">
+                  <ion-item lines="none">
+                    <ion-avatar slot="start">
+                     <!--  <img [src]="'../../../assets/icon/man.png' + booking.user_id" alt="foto"> -->
+                      <img src="../../../assets/icon/man_1.png" alt="foto">
+                    </ion-avatar>
+                    <ion-label>
+                      <h3>Usuario</h3>
+                      <p>{{ booking.user.first_name }} {{ booking.user.last_name }}</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="12" size-md="6">
+                  <ion-item lines="none">
+                    <ion-avatar slot="start">
+                      <img [src]="'https://i.pravatar.cc/80?img=' + booking.staff_id" alt="imagen" >
+                    </ion-avatar>
+                    <ion-label>
+                      <h3>Tutor</h3>
+                      <p>{{ booking.staff.first_name }} {{ booking.staff.last_name }}</p>
+                      @if (booking.staff.speciality) {
+                        <ion-badge color="medium">
+                          {{ booking.staff.speciality }}
+                        </ion-badge>
+                      }
+                    </ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      } @empty {
+        <div class="empty-state ion-padding">
+          <ion-icon 
+            name="file-tray-outline" 
+            color="medium" 
+            class="empty-icon"
+          ></ion-icon>
+          <h2 class="ion-text-center">No se encontraron reservas</h2>
+          @if (selectedUser()) {
+            <p class="ion-text-center">No hay reservas para el usuario seleccionado</p>
+          }
+        </div>
+      }
+    </ion-list>
+  }
 </ion-content>

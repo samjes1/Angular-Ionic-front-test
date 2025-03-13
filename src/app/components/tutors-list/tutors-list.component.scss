@@ -1,0 +1,109 @@
+
+
+/* Estilos para el header */
+ion-toolbar {
+    --background: var(--ion-color-light);
+    --border-color: var(--ion-color-light-shade);
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+  }
+  
+  /* Estilos para el filtro */
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 0;
+    --background: transparent;
+    
+    ion-select {
+      width: 100%;
+      max-width: 400px;
+      flex-grow: 1;
+      
+    }
+  }
+  
+  /* Estilos para la lista de tutores */
+  ion-list {
+    background: transparent;
+    padding: 16px 0;
+  }
+ 
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-top: 12px;
+    --inner-padding-bottom: 12px;
+    --border-color: var(--ion-color-light-shade);
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateX(4px);
+    }
+    
+    h2 {
+      font-weight: 600;
+      color: var(--ion-color-dark);
+      margin-bottom: 4px;
+    }
+    
+    p {
+      color: var(--ion-color-medium);
+      font-size: 0.9em;
+      margin: 8px 0;
+    }
+    
+    ion-badge {
+      margin-top: 8px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+  }
+  
+  /* Estado vacío */
+  ion-item.empty-state {
+    --border-color: transparent;
+    --background: var(--ion-color-light);
+    text-align: center;
+    
+    ion-label {
+      color: var(--ion-color-medium);
+      font-style: italic;
+      padding: 24px 0;
+    }
+  }
+  
+  /* Responsive para desktop */
+  @media (min-width: 768px) {
+    ion-list {
+      padding: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    ion-item {
+      --padding-start: 24px;
+      --padding-end: 24px;
+      
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  
+  /* Colores personalizados si se desean */
+  ion-badge[color="success"] {
+    --background: var(--ion-color-success);
+    --color: var(--ion-color-success-contrast);
+  }
+  
+  ion-badge[color="danger"] {
+    --background: var(--ion-color-danger);
+    --color: var(--ion-color-danger-contrast);
+  }
