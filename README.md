@@ -12,14 +12,20 @@ Aplicación para gestión de tutores, usuarios y reservas desarrollada con Angul
 
 1. Clonar repositorio:
 ```bash
-git clone https://github.com/samjes1/Angular-Ionic-front-test.git
-cd Angular-Ionic-front-test
-2. Instalar dependencias 
-``` 
-npm install 
-3. Instalar CLI Angular y Ionic (Si no estan instalados) 
+- git clone `https://github.com/samjes1/Angular-Ionic-front-test.git`
 ```
+```
+- cd Angular-Ionic-front-test
+```
+
+2. Instalar dependencias 
+``` bash
+npm install 
+```
+3. Instalar CLI Angular y Ionic (Si no estan instalados) 
+```bash
 npm install -g @angular/cli@latest @ionic/cli@latest 
+```
 
 ## Configuración 
 1. Configurar variables de entorno
