@@ -29,10 +29,24 @@ npm install -g @angular/cli@latest @ionic/cli@latest
 
 ## Configuración 
 
-1. Configurar variables de entorno
-```bash
+4. Configurar variables de entorno
+```
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api' // URL de tu API
 };
+```
 
+## Levantar APP 
+
+5. Ejecuta el comando
+```ionic serve``` ó ```ng serve```  
+
+## Emulación en local android
+1. Hacer build de la App 
+```bash
+ionic build 
+npx cap sync android
+```
+
+ 
