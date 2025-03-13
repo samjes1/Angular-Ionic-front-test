@@ -9,7 +9,7 @@ import { User } from 'src/models/user.model';
 })
 export class UsersService {
   private http = inject(HttpClient);
- private apiURL = `${environment.baseUrl}/tutors`;
+ private apiURL = `${environment.baseUrl}/users`;
 
   constructor() { }
 

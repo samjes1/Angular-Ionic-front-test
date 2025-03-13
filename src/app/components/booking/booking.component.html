@@ -1,19 +1,18 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>Gestión de Reservas</ion-title>
   </ion-toolbar>
 
-  <ion-toolbar color="primary">
-    <ion-item lines="none" color="primary" >
-      <ion-select class="select-list"
-      label="Filtrar por usuario:" 
-      label-placement="floating"
-      [ngModel]="selectedUser()" 
-      (ngModelChange)="selectedUser.set(+$event)"
-      interface="popover"
+  <ion-toolbar>
+    <ion-item lines="none" color="primary">
+      <ion-select 
+        label="Filtrar por usuario:" 
+        label-placement="floating"
+        [ngModel]="selectedUser()" 
+        (ngModelChange)="selectedUser.set($event)"
+        interface="popover"
       >
-      <ion-icon slot="start" name="reorder-four"></ion-icon>
+        <ion-icon slot="start" name="reorder-four"></ion-icon>
         <ion-select-option [value]="null">Todos los usuarios</ion-select-option>
         @for (user of users(); track user.id) {
           <ion-select-option [value]="user.id">
@@ -82,7 +81,6 @@
                 <ion-col size="12" size-md="6">
                   <ion-item lines="none">
                     <ion-avatar slot="start">
-                     <!--  <img [src]="'../../../assets/icon/man.png' + booking.user_id" alt="foto"> -->
                       <img src="../../../assets/icon/man_1.png" alt="foto">
                     </ion-avatar>
                     <ion-label>
@@ -95,7 +93,7 @@
                 <ion-col size="12" size-md="6">
                   <ion-item lines="none">
                     <ion-avatar slot="start">
-                      <img [src]="'https://i.pravatar.cc/80?img=' + booking.staff_id" alt="imagen" >
+                      <img [src]="'https://i.pravatar.cc/80?img=' + booking.staff_id" alt="imagen">
                     </ion-avatar>
                     <ion-label>
                       <h3>Tutor</h3>
@@ -128,3 +126,4 @@
     </ion-list>
   }
 </ion-content>
+

@@ -1,42 +1,43 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Tutores</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-item>
-      <ion-label color="prmary">Filtrar por especialidad:</ion-label>
-      <ion-select [formControl]="specialityFilter" >
-        <ion-select-option [value]="'all'" selected class="select-list">Todas</ion-select-option>
-        @for (spec of uniqueSpecialities; track spec) {
-          <ion-select-option [value]="spec">
-            {{ spec }}
-          </ion-select-option>
-        }
-      </ion-select>
-    </ion-item>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    @for (tutor of filteredTutors; track tutor.id) {
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Tutores</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
       <ion-item>
-        <ion-label>
-          <h2>{{ tutor.first_name }} {{ tutor.last_name }}</h2>
-          <p>{{ tutor.speciality }}</p>
-          @if (tutor.status === status.Active) {
-            <ion-badge color="success">Activo</ion-badge>
-          } @else {
-            <ion-badge color="danger">Inactivo</ion-badge>
+        <ion-label color="prmary">Filtrar por especialidad:</ion-label>
+        <ion-select [formControl]="specialityFilter" class="select-list" >
+          <ion-icon slot="start" name="reorder-four"></ion-icon>
+          <ion-select-option [value]="'all'" selected class="select-list">Todas</ion-select-option>
+          @for (spec of uniqueSpecialities; track spec) {
+            <ion-select-option [value]="spec">
+              {{ spec }}
+            </ion-select-option>
           }
-        </ion-label>
+        </ion-select>
       </ion-item>
-    } @empty {
-      <ion-item>
-        <ion-label class="ion-text-center">
-          No se encontraron tutores
-        </ion-label>
-      </ion-item>
-    }
-  </ion-list>
-</ion-content>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      @for (tutor of filteredTutors; track tutor.id) {
+        <ion-item>
+          <ion-label>
+            <h2>{{ tutor.first_name }} {{ tutor.last_name }}</h2>
+            <p>{{ tutor.speciality }}</p>
+            @if (tutor.status === status.Active) {
+              <ion-badge color="success">Activo</ion-badge>
+            } @else {
+              <ion-badge color="danger">Inactivo</ion-badge>
+            }
+          </ion-label>
+        </ion-item>
+      } @empty {
+        <ion-item>
+          <ion-label class="ion-text-center">
+            No se encontraron tutores
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  </ion-content>
